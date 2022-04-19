@@ -1,0 +1,36 @@
+<p>formbuild works!</p>
+<h1>My form</h1>
+<section>
+  <h1>Reactive From example</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default"
+        >First Name</span
+      >
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+        formControlName="firstname"
+      />
+    </div>
+    <br />
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default"
+        >Password</span
+      >
+      <input
+        type="password"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+        formControlName="password"
+      />
+    </div>
+    <br />
+    <button type="submit" [disabled]="!form.valid" class="btn btn-primary">
+      Submit
+    </button>
+  </form>
+</section>
