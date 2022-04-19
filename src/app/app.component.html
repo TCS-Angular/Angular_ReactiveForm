@@ -1,1 +1,42 @@
-<app-formbuild></app-formbuild>
+<!-- <app-formbuild></app-formbuild> -->
+<div style="float: left; width: 50%">
+  <form [formGroup]="contactForm"  (ngSubmit)="onSubmit()">
+    <p>
+      <label for="firstname">Firstname</label>
+      <input
+        type="text"
+        name="firstname"
+        id="firstname"
+        formControlName="firstname"
+      />
+    </p>
+    <div *ngIf="!firstname?.valid && (firstname?.dirty || firstname?.touched)">
+      <div [hidden]="!firstname.errors.required">Firstname is required</div>
+      <div [hidden]="!firstname.errors.minlength">min length is 7</div>
+    </div>
+    <p>
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" formControlName="email" />
+    </p>
+    <div>
+      <div *ngIf="!email.valid && (email.dirty || email.touched)">
+        <div [hidden]="!email.errors.email">invalid email id</div>
+      </div>
+    </div>
+    <p>
+      <label for="gender">Gender</label>
+      <input type="radio" value="male" id="gender" formControlName="gender" />
+      Male
+      <input type="radio" value="female" id="gender" formControlName="gender" />
+      Female
+    </p>
+    <div *ngIf="!gender.valid && (gender.dirty || gender.touched)">
+      <div [hidden]="!gender.errors.required">gender is required</div>
+    </div>
+    <p>
+        <button type="submit" [disabled]="!contactForm.valid">Submit</button>
+        <button (click)="reset()"> reset </button>
+    </p>
+  </form>
+ 
+</div>
